@@ -1,12 +1,45 @@
-import { View } from "react-native";
-
-import { H1, Muted } from "@/components/ui/typography";
+import React, { useEffect, useState } from "react";
+import { View, Text, Button, TextInput } from "react-native";
 
 export default function Modal() {
+	const [espIp] = useState<string>("192.168.4.1");
+	const [ssid, setSsid] = useState<string>("");
+	const [password, setPassword] = useState<string>("");
+	const [webSocketOpen, setWebSocketOpen] = useState<boolean>(false);
+	const [ws, setWs] = useState<WebSocket | null>(null);
+
+	const connectWebSocket = (credentials : string) => {
+		const websocket = new WebSocket(`ws://${espIp}:23`, credentials);
+		console.log(websocket)
+	};
+
+	const sendWifiCredentials = () => {
+		const credentials = `&${ssid}$${password}`;
+			connectWebSocket(credentials);
+	};
+
+
 	return (
-		<View className="flex flex-1 items-center justify-center bg-background p-4 gap-y-4">
-			<H1 className="text-center">Modal</H1>
-			<Muted className="text-center">This is a modal screen.</Muted>
+		<View style={{ padding: 20 }}>
+			<Text>Conexão WebSocket com ESP44</Text>
+
+			<TextInput
+				placeholder="SSID"
+				value={ssid}
+				onChangeText={setSsid}
+				style={{ borderWidth: 1, marginTop: 10 }}
+			/>
+			<TextInput
+				placeholder="Senha do Wi-Fi"
+				value={password}
+				onChangeText={setPassword}
+				secureTextEntry
+				style={{ borderWidth: 1, marginTop: 10 }}
+			/>
+			<Button
+				title="Enviar Credenciais de Wi-Fi"
+				onPress={sendWifiCredentials}
+			/>
 		</View>
 	);
 }

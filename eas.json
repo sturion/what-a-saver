@@ -1,0 +1,29 @@
+{
+  "cli": {
+    "version": ">= 12.5.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://flkgbeermdpgtfbxhxqh.supabase.co",
+        "EXPO_PUBLIC_API_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZsa2diZWVybWRwZ3RmYnhoeHFoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjU5MTkzMTYsImV4cCI6MjA0MTQ5NTMxNn0.nVH9j_R4g1ZNdzOF0BAvJoriqCMqL2_Gr491Wb0Uj8s"
+      }
+    },
+    "production": {
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://flkgbeermdpgtfbxhxqh.supabase.co",
+        "EXPO_PUBLIC_API_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZsa2diZWVybWRwZ3RmYnhoeHFoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjU5MTkzMTYsImV4cCI6MjA0MTQ5NTMxNn0.nVH9j_R4g1ZNdzOF0BAvJoriqCMqL2_Gr491Wb0Uj8s"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
