@@ -59,7 +59,7 @@ export default function Home() {
 		return (
 			<View className="bg-white p-4 m-2 rounded-lg shadow w-80 flex-row items-center justify-between">
 				<View className="flex-1">
-					<Text className="text-lg font-bold">{nome}</Text>
+					<Text className="text-lg text-gray-500 font-bold">{nome}</Text>
 					<Text className="text-sm text-gray-500 mt-2">
 						{status ? "Ligado" : "Desligado"}
 					</Text>
@@ -77,64 +77,37 @@ export default function Home() {
 
 	return (
 		<View className="flex-1 items-center justify-center bg-background p-4">
-			<H1 className="text-center mb-4">Home</H1>
+			<H1 className="text-center mb-4 mt-10">Home</H1>
 			<FlatList
 				data={deviceList}
 				keyExtractor={(item) => item.id_dispositivo}
 				renderItem={({ item }) => (
+
+					//{() => router.push("/(app)/(protected)/device" as any)}
 					<View className="items-center">
+						<TouchableOpacity
+						onPress={() => router.push({
+							pathname: "/(app)/modal" as any,
+							params: { deviceId: item.id_dispositivo, name: item.nome},
+						  })}
+						>
 						<DeviceCard
 							status={item.status}
 							nome={item.nome}
 							id={item.id_dispositivo}
 						/>
+						</TouchableOpacity>
 					</View>
 				)}
 				numColumns={1} // Exibe apenas uma coluna
 			/>
-			<Muted className="text-center mt-4">
-				You are now authenticated and this session will persist even after
-				closing the app.
-			</Muted>
 			<Button
 				className="w-full mt-4"
 				variant="default"
 				size="default"
-				onPress={() => router.push("/(app)/modal")}
+				onPress={() => router.push("/(app)/device" as any)}
 			>
-				<Text>Open Modal</Text>
-			</Button>
-			<Button
-				className="w-full mt-4"
-				variant="default"
-				size="default"
-				onPress={() => router.push("/(app)/modal")}
-			>
-				<Text>Open Modal</Text>
-			</Button>
-			<Button
-				className="w-full mt-4"
-				variant="default"
-				size="default"
-				onPress={() => router.push("/(app)/modal")}
-			>
-				<Text>Open Modal</Text>
-			</Button>
-			<Button
-				className="w-full mt-4"
-				variant="default"
-				size="default"
-				onPress={() => router.push("/(app)/modal")}
-			>
-				<Text>Open Modal</Text>
-			</Button>
-			<Button
-				className="w-full mt-4"
-				variant="default"
-				size="default"
-				onPress={() => router.push("/(app)/modal")}
-			>
-				<Text>Open Modal</Text>
+				<Text>Adicionar dispositivo</Text>
 			</Button>
 		</View>
 	);

@@ -1,4 +1,4 @@
-import { Tabs } from "expo-router";
+import { Stack, Tabs } from "expo-router";
 import React from "react";
 
 import { colors } from "@/constants/colors";
@@ -24,6 +24,24 @@ export default function ProtectedLayout() {
 				tabBarShowLabel: false,
 			}}
 		>
+			<Stack.Screen
+				name="device"
+				options={{
+					presentation: "modal",
+					headerShown: true,
+					headerTitle: "Device",
+					headerStyle: {
+						backgroundColor:
+							colorScheme === "dark"
+								? colors.dark.background
+								: colors.light.background,
+					},
+					headerTintColor:
+						colorScheme === "dark"
+							? colors.dark.foreground
+							: colors.light.foreground,
+				}}
+			/>
 			<Tabs.Screen name="index" options={{ title: "Home" }} />
 			<Tabs.Screen name="settings" options={{ title: "Settings" }} />
 		</Tabs>

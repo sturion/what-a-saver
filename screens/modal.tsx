@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
 import { Input } from "@/components/ui/input";
 import { LineChart } from "react-native-chart-kit";
-import { supabase } from "../../config/supabase";
+import { supabase } from "../config/supabase";
 
 interface rawData {
 	[key: string]: any;
@@ -55,7 +55,7 @@ export default function Modal() {
 
 	useEffect(() => {
 		fetchData();
-	}, []);
+	}, [deviceId]);
 
 	const separarDados = (
 		data: {
