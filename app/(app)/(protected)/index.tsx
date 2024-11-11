@@ -6,7 +6,7 @@ import { supabase } from "../../../config/supabase";
 
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
-import { H1, Muted } from "@/components/ui/typography";
+import { H1 } from "@/components/ui/typography";
 
 export default function Home() {
 	const [deviceList, setDeviceList] = useState<
@@ -82,20 +82,21 @@ export default function Home() {
 				data={deviceList}
 				keyExtractor={(item) => item.id_dispositivo}
 				renderItem={({ item }) => (
-
 					//{() => router.push("/(app)/(protected)/device" as any)}
 					<View className="items-center">
 						<TouchableOpacity
-						onPress={() => router.push({
-							pathname: "/(app)/modal" as any,
-							params: { deviceId: item.id_dispositivo, name: item.nome},
-						  })}
+							onPress={() =>
+								router.push({
+									pathname: "/(app)/modal" as any,
+									params: { deviceId: item.id_dispositivo, name: item.nome },
+								})
+							}
 						>
-						<DeviceCard
-							status={item.status}
-							nome={item.nome}
-							id={item.id_dispositivo}
-						/>
+							<DeviceCard
+								status={item.status}
+								nome={item.nome}
+								id={item.id_dispositivo}
+							/>
 						</TouchableOpacity>
 					</View>
 				)}
